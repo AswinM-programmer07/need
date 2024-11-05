@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripFood</title>
+    <link href="//cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Main Background and Navbar */
+        body {
+            background-color: #dd4b39;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background-color: #ffccbc;
+        }
+        p{
+            padding-top: 20px;
+        }
+
+        /* Button Styling */
+        button {
+            border: none;
+            color: #0097b2;
+            font-size: 1.3rem;
+            background-color: #ffccbc;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        button:hover {
+            color: #d73c2c;
+            background-color: #ffccbc;
+        }
+
+        /* Text and Card Styling */
+        .prodcard {
+            margin: 10px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            background-color: #b0000071;
+            border-radius: 13px;
+            padding: 20px;
+            color: #fff;
+        }
+        .bod {
+            background-color: #dd4b39;
+            border-top-right-radius: 13px;
+            border-top-left-radius: 13px;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #dd4b39;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            border-top: 2px solid #ffccbc;
+        }
+
+        /* Pay Button Styling */
+        .pay-button {
+            border: none;
+            background-color: #ffccbc;
+            color: #0097b2;
+            font-size: 1rem;
+            padding: 5px 15px;
+            border-radius: 5px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        .pay-button:hover {
+            color: #d73c2c;
+            background-color: #ffccbc;
+        }
+
+        /* Social Icons */
+        .fa {
+            padding: 15px;
+            font-size: 25px;
+            width: 40px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px;
+            border-radius: 50%;
+            color: white;
+        }
+        .fa:hover {
+            opacity: 0.7;
+        }
+        .fa-facebook { background: #3B5998; }
+        .fa-twitter { background: #55ACEE; }
+        .fa-google { background: #bb8d0f; }
+        .fa-linkedin { background: #007bb5; }
+        .fa-youtube { background: #bb0000; }
+        .fa-instagram { background: #125688; }
+
+        /* Centered Wrapper for Content */
+        .wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="row navbar  container-fluid p-3" style="margin-right: 1000px;">
+        <div class="col">
+          <img src="DealNexuslogo.PNG" alt="logo" widht="100" height="100" />
+        </div>
+        <div class="col pt-3 text-end">
+          <button onclick="window.location.href = 'coupons.html';" style="color:#dd4b39;">
+            <b>Sell<br />Coupons</b>
+          </button>
+        </div>
+        <div class="col pt-3 text-end">
+          <button class="navel" style="text-decoration: none">
+            <b>Buy<br />Products</b>
+          </button>
+        </div>
+        <div class="col pt-3 text-end">
+          <button class="navel" style="text-decoration: none">
+            <b>Your<br />Coupons</b>
+          </button>
+        </div>
+        <div class="col text-end">
+          <button class="navel">
+            <img src="cartlog.png" alt="" width="45px" height="45px" /><br /><b
+              >Cart</b
+            >
+          </button>
+        </div>
+        <div class="col text-end">
+          <button onclick="window.location.href = 'about.html';" class="navel">
+            <img src="userlog.png" alt="" width="45px" height="45px" /><br /><b
+              >About</b
+            >
+          </button>
+        </div>
+      </div>
+
+   
+
+    <div class="wrapper">
+        <div>
+            <h2>Enter Discount Percentage or Rate and Coupon Code</h2>
+            <input type="number" id="inputText" placeholder="Enter discount percentage..." required />
+            <input type="text" id="inputname" placeholder="Enter link for accessing coupon">
+            <input type="number" id="inputCost" placeholder="Enter coupon code" required />
+            <button onclick="saveText()">Submit</button>
+
+            <div class="row mt-4">
+                <div id="textContainer" class="col-4 text-center" style="padding-top: 50px ;"></div>
+                <div id="inputnameContainer" class="col-4 text-center" style="padding-top: 50px ;"></div>
+                <div id="costContainer" class="col-4 text-center"></div>
+            </div>
+
+            <button onclick="clearLocalStorage()">Clear Local Storage</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div>Connect with us:</div>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-google"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-youtube"></a>
+        <a href="#" class="fa fa-instagram"></a>
+    </footer>
+
+<script>
+    function loadTexts() {
+        const textContainer = document.getElementById("textContainer");
+        const inputnameContainer = document.getElementById("inputnameContainer");
+        const costContainer = document.getElementById("costContainer");
+        
+        textContainer.innerHTML = "";
+        inputnameContainer.innerHTML = "";
+        costContainer.innerHTML = "";
+
+        const storedTexts = JSON.parse(localStorage.getItem("textse")) || [];
+        const storedCosts = JSON.parse(localStorage.getItem("textce")) || [];
+        const storedNames = JSON.parse(localStorage.getItem("textne")) || [];
+
+        storedTexts.forEach(text => {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = text;
+            textContainer.appendChild(paragraph);
+        });
+
+        storedNames.forEach(name => {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = name;
+            inputnameContainer.appendChild(paragraph);
+        });
+
+        storedCosts.forEach(cost => {
+            const payButton = document.createElement("button");
+            payButton.textContent = "Pay";
+            payButton.classList.add("pay-button");
+            const paragraph = document.createElement("p");
+            // paragraph.textContent = cost;
+            // paragraph.classList.add("cost");
+
+            
+
+            payButton.addEventListener("click", () => {
+                alert(`Cost: ${cost}`);
+            });
+
+            costContainer.appendChild(paragraph);
+            costContainer.appendChild(payButton);
+        });
+    }
+
+    function saveText() {
+        const inputDate = document.getElementById("inputText");
+        const inputCost = document.getElementById("inputCost");
+        const inputName = document.getElementById("inputname");
+
+        const newName = inputName.value.trim();
+        const newText = inputDate.value.trim();
+        const newCost = inputCost.value.trim();
+
+        if (newText && newCost) {
+            const storedTexts = JSON.parse(localStorage.getItem("textse")) || [];
+            const storedCosts = JSON.parse(localStorage.getItem("textce")) || [];
+            const storedNames = JSON.parse(localStorage.getItem("textne")) || [];
+
+            storedTexts.push(newText);
+            storedCosts.push(newCost);
+            storedNames.push(newName);
+
+            localStorage.setItem("textse", JSON.stringify(storedTexts));
+            localStorage.setItem("textce", JSON.stringify(storedCosts));
+            localStorage.setItem("textne", JSON.stringify(storedNames));
+
+            loadTexts();
+            inputName.value = "";
+            inputDate.value = "";
+            inputCost.value = "";
+        }
+    }
+
+    function clearLocalStorage() {
+        localStorage.clear();
+        alert("Local storage has been cleared!");
+        loadTexts();
+    }
+
+    window.onload = loadTexts;
+</script>
+</body>
+</html>
